@@ -4518,6 +4518,11 @@
             }
 
             track.innerHTML = [...items, ...items].join("");
+            requestAnimationFrame(() => {
+                const scrollDistance = Math.max(track.scrollWidth / 2, 1);
+                const durationSeconds = Math.min(Math.max(Math.round(scrollDistance / 6), 220), 900);
+                track.style.animationDuration = `${durationSeconds}s`;
+            });
         }
 
         function tickerBadgeClass(record) {
